@@ -6,7 +6,7 @@
     "start": "ng serve",
     "build": "ng build",
     "build:gh": "ng build --configuration production --base-href='/Proyecto-Final-Angular/'",
-    "deploy:gh": "npx ngh --dir=dist/user-management-app",
+    "deploy:gh": "npx ngh --dir=dist/user-management-app/browser",
     "deploy": "npm run build:gh && npm run deploy:gh",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
