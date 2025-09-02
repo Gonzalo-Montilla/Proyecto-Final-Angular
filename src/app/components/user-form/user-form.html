@@ -1,0 +1,138 @@
+<div class="form-container">
+  <mat-card class="form-card">
+    <mat-card-header>
+      <mat-card-title>
+        <mat-icon>person_add</mat-icon>
+        Crear Nuevo Usuario
+      </mat-card-title>
+      <mat-card-subtitle>Complete todos los campos para crear un nuevo usuario</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="user-form">
+        
+        
+        <div class="section">
+          <h3>Información Personal</h3>
+          
+          <div class="form-row">
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Nombre completo</mat-label>
+              <input matInput formControlName="name" placeholder="Escribe tu nombre completo">
+              <mat-icon matPrefix>person</mat-icon>
+              <mat-error *ngIf="userForm.get('name')?.invalid && userForm.get('name')?.touched">
+                {{ getErrorMessage('name') }}
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="form-row">
+            <mat-form-field appearance="outline" class="half-width">
+              <mat-label>Nombre de usuario</mat-label>
+              <input matInput formControlName="username" placeholder="Elige un nombre de usuario">
+              <mat-icon matPrefix>alternate_email</mat-icon>
+              <mat-error *ngIf="userForm.get('username')?.invalid && userForm.get('username')?.touched">
+                {{ getErrorMessage('username') }}
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="half-width">
+              <mat-label>Correo electrónico</mat-label>
+              <input matInput formControlName="email" type="email" placeholder="Tu correo electrónico">
+              <mat-icon matPrefix>email</mat-icon>
+              <mat-error *ngIf="userForm.get('email')?.invalid && userForm.get('email')?.touched">
+                {{ getErrorMessage('email') }}
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="form-row">
+            <mat-form-field appearance="outline" class="half-width">
+              <mat-label>Teléfono</mat-label>
+              <input matInput formControlName="phone" placeholder="Tu número de teléfono">
+              <mat-icon matPrefix>phone</mat-icon>
+              <mat-error *ngIf="userForm.get('phone')?.invalid && userForm.get('phone')?.touched">
+                {{ getErrorMessage('phone') }}
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="half-width">
+              <mat-label>Página web (opcional)</mat-label>
+              <input matInput formControlName="website" placeholder="Tu página web si tienes">
+              <mat-icon matPrefix>language</mat-icon>
+            </mat-form-field>
+          </div>
+        </div>
+
+        
+        <div class="section" formGroupName="address">
+          <h3>Dirección</h3>
+          
+          <div class="form-row">
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Dirección</mat-label>
+              <input matInput formControlName="street" placeholder="Tu dirección completa">
+              <mat-icon matPrefix>home</mat-icon>
+              <mat-error *ngIf="userForm.get('address.street')?.invalid && userForm.get('address.street')?.touched">
+                {{ getErrorMessage('address.street') }}
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="form-row">
+            <mat-form-field appearance="outline" class="half-width">
+              <mat-label>Ciudad</mat-label>
+              <input matInput formControlName="city" placeholder="Tu ciudad">
+              <mat-icon matPrefix>location_city</mat-icon>
+              <mat-error *ngIf="userForm.get('address.city')?.invalid && userForm.get('address.city')?.touched">
+                {{ getErrorMessage('address.city') }}
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="half-width">
+              <mat-label>Código postal</mat-label>
+              <input matInput formControlName="zipcode" placeholder="Tu código postal">
+              <mat-icon matPrefix>markunread_mailbox</mat-icon>
+              <mat-error *ngIf="userForm.get('address.zipcode')?.invalid && userForm.get('address.zipcode')?.touched">
+                {{ getErrorMessage('address.zipcode') }}
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+
+        
+        <div class="section" formGroupName="company">
+          <h3>Empresa</h3>
+          
+          <div class="form-row">
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Empresa donde trabajas</mat-label>
+              <input matInput formControlName="name" placeholder="Nombre de tu empresa">
+              <mat-icon matPrefix>business</mat-icon>
+              <mat-error *ngIf="userForm.get('company.name')?.invalid && userForm.get('company.name')?.touched">
+                {{ getErrorMessage('company.name') }}
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+
+      </form>
+    </mat-card-content>
+
+    <mat-card-actions class="form-actions">
+      <button mat-button type="button" (click)="onCancel()" [disabled]="enviando">
+        <mat-icon>cancel</mat-icon>
+        Cancelar
+      </button>
+      <button 
+        mat-raised-button 
+        color="primary" 
+        type="submit" 
+        (click)="onSubmit()"
+        [disabled]="enviando || !userForm.valid">
+        <mat-icon>save</mat-icon>
+        {{ enviando ? 'Guardando...' : 'Crear Usuario' }}
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>

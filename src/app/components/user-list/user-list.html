@@ -1,0 +1,43 @@
+<div class="user-list-container">
+  <div class="header">
+    <h1>Lista de Usuarios</h1>
+    <button mat-raised-button color="primary" routerLink="/users/create">
+      <mat-icon>add</mat-icon>
+      Crear Usuario
+    </button>
+  </div>
+
+  
+  <div *ngIf="cargando" class="loading">
+    <mat-spinner></mat-spinner>
+    <p>Cargando usuarios...</p>
+  </div>
+
+  
+  <div *ngIf="mensajeError" class="error">
+    <p>{{ mensajeError }}</p>
+    <button mat-button (click)="cargarUsuarios()">Reintentar</button>
+  </div>
+
+  
+  <div *ngIf="!cargando && !mensajeError" class="users-grid">
+    <mat-card *ngFor="let user of usuarios" class="user-card">
+      <mat-card-header>
+        <mat-card-title>{{ user.name }}</mat-card-title>
+        <mat-card-subtitle>@{{ user.username }}</mat-card-subtitle>
+      </mat-card-header>
+      
+      <mat-card-content>
+        <div class="user-info">
+          <p><mat-icon>email</mat-icon> {{ user.email }}</p>
+          <p><mat-icon>phone</mat-icon> {{ user.phone }}</p>
+          <p><mat-icon>language</mat-icon> {{ user.website }}</p>
+          <p><mat-icon>location_city</mat-icon> {{ user.address.city }}, {{ user.address.street }}</p>
+          <p><mat-icon>business</mat-icon> {{ user.company.name }}</p>
+        </div>
+      </mat-card-content>
+
+      
+    </mat-card>
+  </div>
+</div>
