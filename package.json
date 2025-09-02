@@ -1,12 +1,12 @@
 {
-  "name": "user-management-app",
+  "name": "app-de-usuarios",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "build:gh": "ng build --configuration production --base-href='/user-management-app/'",
-    "deploy:gh": "npx ngh --dir=dist/user-management-app/browser",
+    "build:gh": "ng build --configuration production --base-href='/app-de-usuarios/'",
+    "deploy:gh": "npx ngh --dir=dist/app-de-usuarios/browser",
     "deploy": "npm run build:gh && npm run deploy:gh",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",

@@ -1,4 +1,4 @@
-# Mi App de Usuarios - Proyecto Final Angular
+# App de Usuarios - Proyecto Final Angular
 
 ## Descripción
 Este es mi proyecto final para la materia de Angular II. Es una aplicación web que permite ver una lista de usuarios y crear nuevos usuarios.
